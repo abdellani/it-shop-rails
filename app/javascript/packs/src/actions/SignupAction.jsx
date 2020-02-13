@@ -1,9 +1,9 @@
 import axios from "axios";
 import { LOGIN,ADD_NOTIFICATION } from "../actions/types";
-const LoginAction = props => dispatch => {
-  let { email, password } = props;
+const SignupAction = props => dispatch => {
+  let { name,email, password,password_confirmation } = props;
   axios
-    .post("api/sessions", { email, password })
+    .post("api/users", { user:{ name,email, password,password_confirmation }  })
     .then(response => {
       dispatch({
         type: LOGIN,
@@ -19,4 +19,4 @@ const LoginAction = props => dispatch => {
     .catch(error => console.log(error.response.data));
 };
 
-export default LoginAction;
+export default SignupAction;

@@ -6,4 +6,5 @@ Rails.application.routes.draw do
     resources :users, only: [:create]
   end
   root "pages#index"
+  match '*path' => 'pages#index', via: [:get]
 end

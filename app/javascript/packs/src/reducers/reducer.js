@@ -5,7 +5,7 @@ const initial_states = { messages: [] };
 const reducer = (state = initial_states, action) => {
   switch (action.type) {
     case LOGIN:
-      return Object.assign({}, state, { token: action.token });
+      return Object.assign({}, state, { id:action.id,token: action.token });
       break;
     case ADD_NOTIFICATION:
       return Object.assign({}, state, {

@@ -5,7 +5,12 @@ class Api::UsersController < ApplicationController
     
     if user && user.save
       token = generate_new_jwt_token(user)
-      render json: {status: 200, token:token}
+      render json: {
+        status: 200,
+        id: user.id, 
+        token:token,
+        message: "Welcome !"
+      }
     else
       render json: { status: 422, message: user.errors.messages}, status: 422
     end

@@ -1,6 +1,7 @@
 import React from "react"
 import SignupForm from "../components/SignupForm"
-import axios from "axios"
+import {connect} from "react-redux"
+import SignupAction from "../actions/SignupAction"
 class SignupPage extends React.Component {
   constructor(){
     super()
@@ -18,13 +19,7 @@ class SignupPage extends React.Component {
   }
   handleSubmit(e){
     e.preventDefault()
-    axios.post("api/users",
-    {user:{...this.state}}
-    ).then(
-      (response)=> console.log(response)
-    ).catch(
-      (err)=> console.log(err.response.data)
-    )
+    this.props.signup({...this.state})
   }
   render(){
     return(
@@ -37,4 +32,9 @@ class SignupPage extends React.Component {
   }
 }
 
-export default SignupPage;
+const mapDispatchToProps= (dispatch)=>{
+  return {
+    signup: (props)=>dispatch(SignupAction(props))
+  }
+}
+export default connect(null,mapDispatchToProps)(SignupPage);
