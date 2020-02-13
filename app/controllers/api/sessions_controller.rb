@@ -9,6 +9,7 @@ class Api::SessionsController < ApplicationController
   end
 
   def destroy
+    #TODO Implement logout
   end
 
 end
