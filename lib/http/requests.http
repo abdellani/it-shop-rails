@@ -1,0 +1,18 @@
+POST http://127.0.0.1:3000/api/sessions HTTP/1.1
+content-type: application/json
+
+{
+    "email": "test@test.com",
+    "password": "123456"
+}
+##############
+GET http://127.0.0.1:3000/ HTTP/1.1
+content-type: application/json
+
+{
+    "param": "boom  !",
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiYWNjZXNzX3Rva2VuIjoiUkhlaHpMaHpGdVJlVjc1a3FWSkdwRnMyIn0.TMu0_5j3pQHgaNP-BA51BavVNoqjGZnxPqVyHcjJ1BQ"
+}
+
+
+#  "token": "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiYWNjZXNzX3Rva2VuIjoiQWJGY1VidGNXZVV3TWpvd0xoNW9KZjduIn0.i3ZtvRM18cdZxPl81mxBCEgtlHqnk0i1-NyV8Rb7l60"
