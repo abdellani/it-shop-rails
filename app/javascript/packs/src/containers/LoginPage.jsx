@@ -1,6 +1,8 @@
 import React from "react"
 import LoginForm from "../components/LoginForm"
 import axios from "axios"
+import {connect} from "react-redux"
+import LoginAction from "../actions/LoginAction"
 class LoginPage extends React.Component {
 
   constructor(){
@@ -18,13 +20,7 @@ class LoginPage extends React.Component {
   handleSubmit(e){
     e.preventDefault()
     let {email,password}=this.state
-    axios.post("api/sessions",
-      {email,password}
-    ).then(
-      (response)=> console.log(response)
-    ).catch(
-      (error)=> console.log(error.response.data)
-    )
+    this.props.login({email,password})
   }
   render(){
     return (
@@ -35,7 +31,12 @@ class LoginPage extends React.Component {
       />
     )
   }
-
 }
 
-export default LoginPage;
+const mapDispatchToProps=(dispatch)=>{
+  return{
+    login: (props)=> dispatch(LoginAction(props))
+  }
+}
+
+export default connect(null,mapDispatchToProps)(LoginPage);
