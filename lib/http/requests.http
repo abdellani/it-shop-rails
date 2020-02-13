@@ -14,5 +14,18 @@ content-type: application/json
     "token": "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiYWNjZXNzX3Rva2VuIjoiUkhlaHpMaHpGdVJlVjc1a3FWSkdwRnMyIn0.TMu0_5j3pQHgaNP-BA51BavVNoqjGZnxPqVyHcjJ1BQ"
 }
 
-
 #  "token": "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiYWNjZXNzX3Rva2VuIjoiQWJGY1VidGNXZVV3TWpvd0xoNW9KZjduIn0.i3ZtvRM18cdZxPl81mxBCEgtlHqnk0i1-NyV8Rb7l60"
+################
+POST http://127.0.0.1:3000/api/users HTTP/1.1
+content-type: application/json
+
+{
+        "user":{
+            "name": "user",
+            "email": "test@test.com",
+            "password": "123456",
+           "password_confirmation": "123456"
+        }
+}
+
+# "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiYWNjZXNzX3Rva2VuIjoiSlA2VXdLTXlpemZHa1Nma1l5VzVVMmpSIn0.GTODNaHFR6lRV7ZQCfvjwdrbJTpM-1rxkvky1y5ddQ8"
