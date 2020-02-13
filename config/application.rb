@@ -12,6 +12,9 @@ require "action_view/railtie"
 require "action_cable/engine"
 # require "sprockets/railtie"
 require "rails/test_unit/railtie"
+require_relative "../lib/authentication/password.rb"
+require_relative "../lib/authentication/token.rb"
+require_relative "../lib/authentication/helper_methods.rb"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -31,5 +34,20 @@ module ItShop
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    config.middleware.use Warden::Manager do |manager|
+      manager.default_strategies :token
+      manager.failure_app = Proc.new do |env| 
+        [
+          '401',
+          {'Content-Type' => 'application/json'},
+          [
+            {
+              code: 401,
+              error: env['warden.options'][:message],
+            }.to_json
+          ]
+        ]
+      end
+    end
   end
 end
