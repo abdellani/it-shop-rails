@@ -4,20 +4,11 @@ class Api::SessionsController < ApplicationController
     render json: {
       code: 200,
       message: "Authenticated successfully",
-      token: generate_new_token
+      token: generate_new_jwt_token(current_user)
     } 
   end
+
   def destroy
   end
 
-  private
-  def generate_new_token
-    current_user.regenerate_access_token
-    payload= {
-      id:current_user.id,
-      access_token:current_user.access_token
-    }
-    #TODO Add expiration data
-    token = JWT.encode payload, ENV['JWT_PASSWORD'], 'HS256'
-  end
 end
