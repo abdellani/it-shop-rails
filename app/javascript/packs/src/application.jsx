@@ -3,7 +3,7 @@ import LoginPage from "./containers/LoginPage";
 import SignupPage from "./containers/SignupPage";
 import GuestRoute from "./containers/GuestRoute";
 import { Switch, Route, BrowserRouter as Router, Link } from "react-router-dom";
-
+import ProductsPage from "./containers/ProductsPage"
 const Index = () => <div>index page</div>;
 const Application = () => (
   <Router>
@@ -21,6 +21,7 @@ const Application = () => (
       </Route>
       <Route>
         <Index />
+        <ProductsPage/>
       </Route>
     </Switch>
     {/* <SignupPage /> */}

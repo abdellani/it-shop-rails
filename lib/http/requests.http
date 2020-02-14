@@ -31,3 +31,6 @@ content-type: application/json
 # "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiYWNjZXNzX3Rva2VuIjoiSlA2VXdLTXlpemZHa1Nma1l5VzVVMmpSIn0.GTODNaHFR6lRV7ZQCfvjwdrbJTpM-1rxkvky1y5ddQ8"
 ##################
 GET http://127.0.0.1:3000/api/products HTTP/1.1
+
+###################
+GET http://127.0.0.1:3000/api/photos/1 HTTP/1.1
