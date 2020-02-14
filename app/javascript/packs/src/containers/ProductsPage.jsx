@@ -1,4 +1,4 @@
-import React from "react";
+import React,{Fragment} from "react";
 import { connect } from "react-redux";
 import FetchProductsAction from "../actions/FetchProductsAction";
 import ProductCard from "../components/ProductCard";
@@ -14,10 +14,14 @@ class ProductPage extends React.Component {
     let { products } = this.props;
 
     return (
-      <div>
+      <Fragment >
         {products &&
-          products.map((product, id) => <ProductCard key={id} {...product} />)}
-      </div>
+          products.map((product, id) => (
+            <div key={id} className="col-md-4 my-2">
+              <ProductCard  {...product} />
+            </div>
+          ))}
+      </Fragment>
     );
   }
 }

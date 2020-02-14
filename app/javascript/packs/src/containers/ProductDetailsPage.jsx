@@ -10,7 +10,6 @@ class ProductDetailsPage extends React.Component {
     }
   }
   componentDidMount(){
-    console.log(this.props.match.params)
     let {id }= this.props.match.params
     this.props.fetchProductDetails(id)
   }

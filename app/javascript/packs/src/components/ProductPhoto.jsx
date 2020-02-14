@@ -9,7 +9,7 @@ class ProductPhoto extends React.Component {
     }
   }
   componentDidMount(){
-    let {id}=this.props
+    let {id,className}=this.props
     //TODO Consider the case when the request crash
     axios.get(`/api/photos/${id}`).then(
       response =>{
@@ -26,7 +26,7 @@ class ProductPhoto extends React.Component {
     if(loading){
       return <div>Loading</div>
     }else{
-      return <div><img src={photo}/> </div>
+      return <div><img className="card-img-top" src={photo}/> </div>
     }
 
   }

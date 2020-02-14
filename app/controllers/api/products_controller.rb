@@ -3,7 +3,7 @@ class Api::ProductsController < ApplicationController
     render json: {
       status: 200,
       products: Product.all.as_json(
-        only: [:id,:owner_id,:name,:price,:category],
+        only: [:id,:owner_id,:name,:price,:category,:description],
         include:[photos:{only:[:id]}]
       )
     }
