@@ -4,7 +4,7 @@ class Api::PhotosController < ActionController::Base
     if @photo
       render json: { 
         status:200,
-        photo:"data:image/png;base64, #{@photo.content}"
+        photo:@photo.content
       }
     else
       render json: { status:404, message: "Photo not found!"}, status: 404

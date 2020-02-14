@@ -1,4 +1,9 @@
-import { LOGIN, ADD_NOTIFICATION,FETCH_PRODUCTS } from "../actions/types";
+import {
+  LOGIN,
+  ADD_NOTIFICATION,
+  FETCH_PRODUCTS,
+  FETCH_PRODUCT_DETAILS
+} from "../actions/types";
 
 const initial_states = { messages: [] };
 
@@ -15,6 +20,9 @@ const reducer = (state = initial_states, action) => {
     case FETCH_PRODUCTS:
       return Object.assign({}, state, { products: action.products });
       break;
+    case FETCH_PRODUCT_DETAILS:
+        return Object.assign({}, state, { product: action.product });
+        break;
     default:
       return state;
       break;

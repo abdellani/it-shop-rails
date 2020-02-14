@@ -1,6 +1,5 @@
 import React from "react"
 import LoginForm from "../components/LoginForm"
-import axios from "axios"
 import {connect} from "react-redux"
 import LoginAction from "../actions/LoginAction"
 class LoginPage extends React.Component {
