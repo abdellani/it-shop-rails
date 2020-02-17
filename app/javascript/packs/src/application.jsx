@@ -7,6 +7,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import LoginPage from "./containers/LoginPage";
 import SignupPage from "./containers/SignupPage";
 import GuestRoute from "./containers/GuestRoute";
+import ProtectedRoute from "./containers/ProtectedRoute"
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import ProductsPage from "./containers/ProductsPage";
 import CreateProductPage from "./containers/CreateProductPage";
@@ -23,13 +24,16 @@ const Application = props => (
       </div>
       <div className="row">
         <Switch>
-          <Route path="/login">
-            <GuestRoute Component={LoginPage} />
-          </Route>
+          <Route
+            path="/login"
+            component={props => <GuestRoute {...props} Component={LoginPage} />}
+          />
           <Route path="/signup">
             <GuestRoute Component={SignupPage} />
           </Route>
-          <Route path="/products/new" component={CreateProductPage} />
+          <Route path="/products/new" 
+          component={ props => <ProtectedRoute {...props} Component={CreateProductPage}/>} 
+          />
           <Route path="/products/:id" component={ProductDetailsPage} />
           <Route>
             <ProductsPage />
