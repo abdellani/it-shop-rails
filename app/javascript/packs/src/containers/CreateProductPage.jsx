@@ -30,7 +30,6 @@ class LoginPage extends React.Component {
     e.preventDefault();
     let { token } = this.props;
     let { photo } = this.state;
-    console.log(photo);
     let reader = new FileReader();
     reader.onloadend = e => {
       //TODO check if the file before sending the request to the server

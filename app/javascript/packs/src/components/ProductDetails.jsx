@@ -4,22 +4,10 @@ const ProductDetails = props => (
   <div className="col-md-8 my-4">
     {props.photos.length > 0 && <ProductPhoto {...props.photos[0]} />}
     <div className="my-3">
-      Proposed by{" "}
-      <span className="font-weight-bolder">@{props.owner.name}</span> on{" "}
-      <span className="font-weight-bold">
-        {props.created_at.substring(0, 10)}
-      </span>{" "}
-      at{" "}
-      <span className="font-weight-bold">
-        {props.created_at.substring(11, 16)}
-      </span>
-      .
-    </div>
-    <div>
-      <table class="table table-hover">
+      <table className="table table-hover">
         <colgroup>
-          <col class="col-md-4" />
-          <col class="col-md-7" />
+          <col className="col-md-3" />
+          <col className="col-md-9" />
         </colgroup>
         <tbody>
           <tr>
@@ -36,15 +24,30 @@ const ProductDetails = props => (
           </tr>
           <tr>
             <td>Quantity</td>
-            <td>{(props.quantity)?props.quantity:"Unavailable " }</td>
+            <td>{props.quantity ? props.quantity : "Unavailable "}</td>
           </tr>
           <tr>
             <td>Price</td>
             <td>{props.price} $</td>
           </tr>
+          <tr>
+            <td>Provider</td>
+            <td>
+              <span className="font-weight-bolder">@{props.owner.name}</span>
+            </td>
+          </tr>
+          <tr>
+            <td>Publication date</td>
+            <td>
+              {props.created_at.substring(0, 10)} at{" "}
+              {props.created_at.substring(11, 16)}.
+            </td>
+          </tr>
         </tbody>
       </table>
-      <button type="button" className="btn btn-primary btn-lg btn-block">Add to basket</button>
+      <button type="button" className="btn btn-primary btn-lg btn-block">
+        Add to basket
+      </button>
     </div>
   </div>
 );
