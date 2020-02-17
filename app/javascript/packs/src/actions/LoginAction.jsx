@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LOGIN,ADD_NOTIFICATION } from "../actions/types";
+import { LOGIN, ADD_NOTIFICATION, SET_FLASH } from "../actions/types";
 const LoginAction = props => dispatch => {
   let { email, password } = props;
   axios
@@ -8,15 +8,25 @@ const LoginAction = props => dispatch => {
       dispatch({
         type: LOGIN,
         id: response.data.id,
-        token: response.data.token,
-      })
-      dispatch({
-        type:ADD_NOTIFICATION,
-        message:response.data.message 
-      })
-      ;
+        token: response.data.token
+      });
     })
-    .catch(error => console.log(error.response.data));
+    .then(() =>
+      dispatch({
+        type: SET_FLASH,
+        messageType: "success",
+        message:"Authenticated successfully !"
+      })
+    )
+    .catch(error => {
+      console.log(error);
+      let { status, message } = error.response.data;
+      dispatch({
+        type: SET_FLASH,
+        messageType: "error",
+        message
+      });
+    });
 };
 
 export default LoginAction;

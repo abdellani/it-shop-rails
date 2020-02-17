@@ -8,7 +8,6 @@ const CreateProductAction = props => dispatch => {
       product: { name, description, price, quantity, category,photo }
     })
     .then(response => {
-      // console.log(response);
     })
     .catch(error => console.log(error.response.data));
 };

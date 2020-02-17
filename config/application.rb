@@ -42,8 +42,8 @@ module ItShop
           {'Content-Type' => 'application/json'},
           [
             {
-              code: 401,
-              error: env['warden.options'][:message],
+              status: 401,
+              message: env['warden.options'][:message],
             }.to_json
           ]
         ]
