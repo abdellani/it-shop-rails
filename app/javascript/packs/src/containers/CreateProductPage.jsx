@@ -28,12 +28,13 @@ class LoginPage extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    let { token } = this.props;
+    let { token,history } = this.props;
+    console.log(this.props)
     let { photo } = this.state;
     let reader = new FileReader();
     reader.onloadend = e => {
       //TODO check if the file before sending the request to the server
-      this.props.createProduct({ token, ...this.state, photo: e.target.result });
+      this.props.createProduct({ token,history, ...this.state, photo: e.target.result });
     };
     reader.readAsDataURL(photo[0]);
   }

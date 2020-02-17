@@ -7,7 +7,7 @@ const ProductForm = ({
   description,
   price,
   quantity,
-  category,
+  category
 }) => (
   <div className="col-8 my-4">
     <form>
@@ -66,7 +66,7 @@ const ProductForm = ({
         <input
           type="file"
           id="photo"
-//          {/* value={photo} */}
+          //          {/* value={photo} */}
           className="form-control"
           onChange={handleChange}
         />

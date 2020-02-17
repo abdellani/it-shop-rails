@@ -11,30 +11,28 @@ import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import ProductsPage from "./containers/ProductsPage";
 import CreateProductPage from "./containers/CreateProductPage";
 import ProductDetailsPage from "./containers/ProductDetailsPage";
-import Flash from "./components/Flash"
-import Navbar from "./components/Navbar"
+import Flash from "./components/Flash";
+import Navbar from "./components/Navbar";
 
-const Application = (props) => (
-  <Router >
+const Application = props => (
+  <Router>
     <Navbar />
     <main className="container">
       <div className="w-100 d-flex flex-column align-items-center justify-content-center">
-        <Flash/>
+        <Flash />
       </div>
       <div className="row">
         <Switch>
-          <Route path="/login" >
+          <Route path="/login">
             <GuestRoute Component={LoginPage} />
           </Route>
           <Route path="/signup">
             <GuestRoute Component={SignupPage} />
           </Route>
-          <Route path="/products/new">
-            <CreateProductPage />
-          </Route>
+          <Route path="/products/new" component={CreateProductPage} />
           <Route path="/products/:id" component={ProductDetailsPage} />
           <Route>
-            <ProductsPage /> 
+            <ProductsPage />
           </Route>
         </Switch>
       </div>

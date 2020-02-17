@@ -3,7 +3,7 @@ import {
   ADD_NOTIFICATION,
   FETCH_PRODUCTS,
   FETCH_PRODUCT_DETAILS,
-  SET_FLASH,
+  ADD_FLASH,
   REMOVE_FLASH
 } from "../actions/types";
 
@@ -25,7 +25,7 @@ const reducer = (state = initial_states, action) => {
     case FETCH_PRODUCT_DETAILS:
       return Object.assign({}, state, { product: action.product });
       break;
-    case SET_FLASH:
+    case ADD_FLASH:
       let { messageType, message } = action;
       return Object.assign({}, state, {
         messages: [

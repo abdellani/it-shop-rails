@@ -1,15 +1,23 @@
 import axios from "axios";
+import { ADD_FLASH } from "../actions/types";
 
 const CreateProductAction = props => dispatch => {
-  let { token, name, description, price, quantity, category,photo } = props;
+  let { token, name, description, price, quantity, category, photo } = props;
   axios
     .post("/api/products", {
       token,
-      product: { name, description, price, quantity, category,photo }
+      product: { name, description, price, quantity, category, photo }
     })
     .then(response => {
+      let { status, message } = response.data;
+      dispatch({
+        type: ADD_FLASH,
+        messageType: status,
+        message: message
+      });
     })
-    .catch(error => console.log(error.response.data));
+    .then(() => props.history.push("/"))
+    .catch(error => console.log(error));
 };
 
 export default CreateProductAction;
