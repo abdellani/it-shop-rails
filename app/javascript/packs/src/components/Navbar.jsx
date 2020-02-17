@@ -9,35 +9,7 @@ const ProtectedItems = () => (
     </Link>
   </li>
 );
-
-class Navbar extends React.Component {
-  render() {
-    let { isAuthenticated } = this.props;
-    console.log(this.props);
-    return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a className="navbar-brand" href="#">
-          IT-Shop
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul className="navbar-nav">
-            <li className="nav-item active">
-              <Link className="nav-link" to="/">
-                Home
-              </Link>
-            </li>
-            {isAuthenticated && <ProtectedItems />}
+const GuestItems = ()=>
             <li className="nav-item dropdown active">
               <a
                 className="nav-link dropdown-toggle"
@@ -62,6 +34,34 @@ class Navbar extends React.Component {
                 </Link>
               </div>
             </li>
+class Navbar extends React.Component {
+  render() {
+    let { isAuthenticated } = this.props;
+    return (
+      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a className="navbar-brand" href="#">
+          IT-Shop
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul className="navbar-nav">
+            <li className="nav-item active">
+              <Link className="nav-link" to="/">
+                Home
+              </Link>
+            </li>
+            {isAuthenticated && <ProtectedItems />}
+            {!isAuthenticated && <GuestItems />}
           </ul>
         </div>
       </nav>
