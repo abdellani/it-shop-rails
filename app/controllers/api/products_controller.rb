@@ -14,7 +14,8 @@ class Api::ProductsController < ApplicationController
       product: Product.find_by_id(params[:id]).as_json(
         include:[
           photos:{only:[:id]},
-          owner:{only:[:name,:id]}
+          owner:{only:[:name,:id]},
+          # comments:{only:[:id]}
         ]
       )
     }

@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :api do
     resources :photos, only:[:show]
-    resources :products, only:[:index,:create,:show]
+    resources :products, only:[:index,:create,:show],module: :products do
+      resources :comments, only: [:index,:create]
+    end
     resources :sessions, only: [:create,:destroy]
     resources :users, only: [:create]
     namespace :loggedin do

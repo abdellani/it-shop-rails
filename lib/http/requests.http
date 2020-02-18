@@ -32,13 +32,13 @@ content-type: application/json
 ##################
 GET http://127.0.0.1:3000/api/products HTTP/1.1
 ##################
-GET http://127.0.0.1:3000/api/products/9 HTTP/1.1
+GET http://127.0.0.1:3000/api/products/5 HTTP/1.1
 
 ###################
 GET http://127.0.0.1:3000/api/photos/2 HTTP/1.1
 ########
 GET http://127.0.0.1:3000/api/products HTTP/1.1
 
-{
-"token": "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiYWNjZXNzX3Rva2VuIjoiV3NNeTR6NG54WDE5cldXWTZjYWYzQ2FXIn0.YvxMoqVsdIvC1igWrDZxEV4Uz9V8MSyyVcWc3P3oRlU"
-}
+
+#######
+GET http://127.0.0.1:3000/api/products/5/comments

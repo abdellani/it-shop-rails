@@ -3,12 +3,18 @@ import {
   ADD_NOTIFICATION,
   FETCH_PRODUCTS,
   FETCH_PRODUCT_DETAILS,
+  FETCH_PRODUCT_COMMENTS,
   ADD_FLASH,
   REMOVE_FLASH,
   FETCH_MY_PRODUCTS
 } from "../actions/types";
 
-const initial_states = { messages: [], products: [], myProducts: [] };
+const initial_states = {
+  messages: [],
+  products: [],
+  myProducts: [],
+  comments: []
+};
 
 const reducer = (state = initial_states, action) => {
   switch (action.type) {
@@ -42,6 +48,9 @@ const reducer = (state = initial_states, action) => {
       break;
     case FETCH_MY_PRODUCTS:
       return Object.assign({}, state, { myProducts: action.products });
+      break;
+    case FETCH_PRODUCT_COMMENTS:
+      return Object.assign({}, state, { comments: action.comments });
       break;
     default:
       return state;
