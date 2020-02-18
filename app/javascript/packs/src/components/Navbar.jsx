@@ -3,37 +3,51 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 const ProtectedItems = () => (
-  <li className="nav-item active">
-    <Link className="nav-link" to="/products/new">
-      Add new product
-    </Link>
+  <li className="nav-item dropdown active">
+    <a
+      className="nav-link dropdown-toggle"
+      href="#"
+      id="navbarDropdownMenuLink"
+      role="button"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      Products
+    </a>
+    <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      <Link className="dropdown-item" to="/products/new">
+        Add new product
+      </Link>
+      <Link className="dropdown-item" to="/products/mine">
+        My products
+      </Link>
+    </div>
   </li>
 );
-const GuestItems = ()=>
-            <li className="nav-item dropdown active">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdownMenuLink"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Login / Signup
-              </a>
-              <div
-                className="dropdown-menu"
-                aria-labelledby="navbarDropdownMenuLink"
-              >
-                <Link className="dropdown-item" to="/login">
-                  Login
-                </Link>
-                <Link className="dropdown-item" to="/signup">
-                  Sign up
-                </Link>
-              </div>
-            </li>
+const GuestItems = () => (
+  <li className="nav-item dropdown active">
+    <a
+      className="nav-link dropdown-toggle"
+      href="#"
+      id="navbarDropdownMenuLink"
+      role="button"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      Login / Signup
+    </a>
+    <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      <Link className="dropdown-item" to="/login">
+        Login
+      </Link>
+      <Link className="dropdown-item" to="/signup">
+        Sign up
+      </Link>
+    </div>
+  </li>
+);
 class Navbar extends React.Component {
   render() {
     let { isAuthenticated } = this.props;

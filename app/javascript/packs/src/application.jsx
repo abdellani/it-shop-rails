@@ -14,6 +14,7 @@ import CreateProductPage from "./containers/CreateProductPage";
 import ProductDetailsPage from "./containers/ProductDetailsPage";
 import Flash from "./components/Flash";
 import Navbar from "./components/Navbar";
+import MyProductsPage from "./containers/MyProductsPage"
 
 const Application = props => (
   <Router>
@@ -34,6 +35,9 @@ const Application = props => (
           <Route path="/products/new" 
           component={ props => <ProtectedRoute {...props} Component={CreateProductPage}/>} 
           />
+          <Route path="/products/mine" 
+          component={ props => <ProtectedRoute {...props} Component={MyProductsPage}/>} 
+          /> 
           <Route path="/products/:id" component={ProductDetailsPage} />
           <Route>
             <ProductsPage />

@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     resources :products, only:[:index,:create,:show]
     resources :sessions, only: [:create,:destroy]
     resources :users, only: [:create]
+    namespace :loggedin do
+      resources :products, only:[:index]
+    end
   end
   root "pages#index"
   match '*path' => 'pages#index', via: [:get]
