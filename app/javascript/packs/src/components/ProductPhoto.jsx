@@ -9,11 +9,10 @@ class ProductPhoto extends React.Component {
     };
   }
   componentDidMount() {
-    let {photo}=this.state
+    let { photo } = this.state;
     let { id } = this.props;
-    if(photo ==""){
+    if (photo == "") {
       this.fetchPhoto(id);
-        
     }
   }
   componentDidUpdate(previousState) {
@@ -35,12 +34,16 @@ class ProductPhoto extends React.Component {
   }
   render() {
     let { loading, photo } = this.state;
+    let { style } = this.props;
+    if (!style) {
+      style = { witdth: "200px", height: "200px" };
+    }
     if (loading) {
       return <div>Loading</div>;
     } else {
       return (
-        <div>
-          <img className="card-img-top" src={photo} />{" "}
+        <div className="w-100 d-flex justify-content-center">
+          <img className="card-img-top" style={style} src={photo} />{" "}
         </div>
       );
     }

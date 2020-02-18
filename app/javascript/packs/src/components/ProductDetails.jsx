@@ -2,7 +2,12 @@ import React from "react";
 import ProductPhoto from "./ProductPhoto";
 const ProductDetails = props => (
   <div className="col-md-8 my-4">
-    {props.photos.length > 0 && <ProductPhoto {...props.photos[0]} />}
+    {props.photos.length > 0 && 
+    <ProductPhoto 
+    {...props.photos[0]}
+     style={{width:"500px",height:"500px"}}
+     />
+     }
     <div className="my-3">
       <table className="table table-hover">
         <colgroup>
