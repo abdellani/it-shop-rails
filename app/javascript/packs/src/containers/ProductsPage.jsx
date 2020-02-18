@@ -14,14 +14,14 @@ class ProductPage extends React.Component {
     let { products } = this.props;
 
     return (
-      <Fragment >
+      <div className="w-100 row my-3">
         {products &&
           products.map((product, id) => (
             <div key={id} className="col-md-4 my-2">
               <ProductCard  {...product} />
             </div>
           ))}
-      </Fragment>
+      </div>
     );
   }
 }

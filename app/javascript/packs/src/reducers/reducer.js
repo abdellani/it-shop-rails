@@ -4,10 +4,11 @@ import {
   FETCH_PRODUCTS,
   FETCH_PRODUCT_DETAILS,
   ADD_FLASH,
-  REMOVE_FLASH
+  REMOVE_FLASH,
+  FETCH_MY_PRODUCTS
 } from "../actions/types";
 
-const initial_states = { messages: [] };
+const initial_states = { messages: [], products: [], myProducts: [] };
 
 const reducer = (state = initial_states, action) => {
   switch (action.type) {
@@ -38,6 +39,9 @@ const reducer = (state = initial_states, action) => {
       return Object.assign({}, state, {
         messages: state["messages"].filter(message => message.id != action.id)
       });
+      break;
+    case FETCH_MY_PRODUCTS:
+      return Object.assign({}, state, { myProducts: action.products });
       break;
     default:
       return state;

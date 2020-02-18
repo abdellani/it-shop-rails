@@ -1,28 +1,39 @@
-import React from "react"
-import {connect} from "react-redux"
-import FetchMyProductsAction from "../actions/FetchMyProductsAction"
-class MyProductsPage extends React.Component{
-  componentDidMount(){
-    let {token} = this.props
-    this.props.fetchMyProducts({token})
+import React from "react";
+import { connect } from "react-redux";
+import FetchMyProductsAction from "../actions/FetchMyProductsAction";
+import MyProducts from "../components/MyProducts";
+import DeleteProductAction from "../actions/DeleteProductAction";
+class MyProductsPage extends React.Component {
+  componentDidMount() {
+    let { token } = this.props;
+    this.props.fetchMyProducts({ token });
   }
-  render(){
-    return(<div>
-      my products
-    </div>)
+  render() {
+    let { token, deleteProduct } = this.props;
+    return (
+      <MyProducts
+        {...this.props}
+        deleteProduct={id => deleteProduct({ token, id })}
+      />
+    );
   }
 }
 
 const mapStateToProps = state => {
-  let {token} = state
+  let { token, myProducts } = state;
   return {
-    token
-  }
-}
-const mapDispatchToProps = dispatch =>{
+    token,
+    myProducts
+  };
+};
+const mapDispatchToProps = dispatch => {
   return {
-    fetchMyProducts : ({token}) =>dispatch(FetchMyProductsAction({token}))
-  }
-}
+    fetchMyProducts: ({ token }) => dispatch(FetchMyProductsAction({ token })),
+    deleteProduct: ({ token, id }) =>
+      dispatch(DeleteProductAction({ token, id })).then(() =>
+      dispatch(FetchMyProductsAction({ token }))
+      )
+  };
+};
 
-export default connect(mapStateToProps,mapDispatchToProps)(MyProductsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MyProductsPage);

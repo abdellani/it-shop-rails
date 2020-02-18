@@ -23,7 +23,7 @@ const Application = props => (
       <div className="w-100 d-flex flex-column align-items-center justify-content-center">
         <Flash />
       </div>
-      <div className="row">
+      <div className="row justify-content-center">
         <Switch>
           <Route
             path="/login"
