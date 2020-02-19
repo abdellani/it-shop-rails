@@ -42,3 +42,6 @@ GET http://127.0.0.1:3000/api/products HTTP/1.1
 
 #######
 GET http://127.0.0.1:3000/api/products/5/comments
+
+#######
+GET http://127.0.0.1:3000/api/users/1

@@ -2,7 +2,7 @@ import React from "react";
 import ProductPhoto from "./ProductPhoto";
 import { Link } from "react-router-dom";
 const ProductCard = props => (
-  <div className="card" style={{ width: "18rem" }}>
+  <div className="card shadow" style={{ width: "18rem" }}>
     {props.photos.length > 0 && <ProductPhoto {...props.photos[0]} />}
     <div className="card-body">
       <h5 className="card-title">{props.name}</h5>

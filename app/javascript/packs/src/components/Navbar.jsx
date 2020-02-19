@@ -7,7 +7,6 @@ const ProtectedItems = () => (
     <a
       className="nav-link dropdown-toggle"
       href="#"
-      id="navbarDropdownMenuLink"
       role="button"
       data-toggle="dropdown"
       aria-haspopup="true"
@@ -19,7 +18,7 @@ const ProtectedItems = () => (
       <Link className="dropdown-item" to="/products/new">
         Add new product
       </Link>
-      <Link className="dropdown-item" to="/products/mine">
+      <Link className="dropdown-item" to="/user/products">
         My products
       </Link>
     </div>

@@ -3,7 +3,7 @@ class Api::ProductsController < ApplicationController
     render json: {
       status: 200,
       products: Product.all.as_json(
-        only: [:id,:owner_id,:name,:price,:category,:description],
+        only: [:id,:name,:price,:category,:description],
         include:[photos:{only:[:id]}]
       )
     }
@@ -13,9 +13,9 @@ class Api::ProductsController < ApplicationController
       status: 200,
       product: Product.find_by_id(params[:id]).as_json(
         include:[
+          #TODO move photo to api/products/photos or send filename of the selected photo
           photos:{only:[:id]},
           owner:{only:[:name,:id]},
-          # comments:{only:[:id]}
         ]
       )
     }

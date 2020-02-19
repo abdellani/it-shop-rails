@@ -5,12 +5,12 @@ import FetchProductComments from "../actions/FetchProductCommentsAction";
 import ProductDetails from "../components/ProductDetails";
 import ProductComments from "../components/ProductComments";
 import SubmitNewCommentAction from "../actions/SubmitNewCommentAction";
-
+import DeleteCommentAction from "../actions/DeleteCommentAction";
 class ProductDetailsPage extends React.Component {
   constructor() {
     super();
     this.state = {
-      id: -1,
+      product_id: -1,
       loading: true,
       newComment: ""
     };
@@ -23,15 +23,20 @@ class ProductDetailsPage extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let { token } = this.props;
-    let { id, newComment } = this.state;
-    this.props.submitNewComment({ token, id, newComment });
+    let { product_id, newComment } = this.state;
+    this.props.submitNewComment({ token, product_id, newComment });
     this.setState({ newComment: "" });
   }
+  deleteComment(comment_id) {
+    let { product_id } = this.state;
+    let { token }=this.props;
+    this.props.deleteComment({ comment_id, product_id, token });
+  }
   componentDidMount() {
-    let { id } = this.props.match.params;
-    this.setState({ id });
-    this.props.fetchProductDetails(id);
-    this.props.fetchProductComments(id);
+    let { product_id } = this.props.match.params;
+    this.setState({ product_id });
+    this.props.fetchProductDetails(product_id);
+    this.props.fetchProductComments(product_id);
   }
   render() {
     let { product } = this.props;
@@ -41,13 +46,14 @@ class ProductDetailsPage extends React.Component {
         <Fragment>
           <div className="row justify-content-center w-100">
             <ProductDetails {...product} />
-            </div>
+          </div>
           <div className="row justify-content-center w-100">
             <ProductComments
               {...this.props}
               newComment={newComment}
               handleChange={e => this.handleChange(e)}
               handleSubmit={e => this.handleSubmit(e)}
+              deleteComment={ comment_id=>this.deleteComment(comment_id)}
             />
           </div>
         </Fragment>
@@ -59,22 +65,27 @@ class ProductDetailsPage extends React.Component {
 }
 
 const mapStatetoProps = state => {
-  let { product, comments, token } = state;
+  let { product, comments, token, id } = state;
   let isAuthenticated = !!token;
   return {
     product,
     comments,
     isAuthenticated,
-    token
+    token,
+    id
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     fetchProductDetails: id => dispatch(FetchProductDetailsAction(id)),
     fetchProductComments: id => dispatch(FetchProductComments(id)),
-    submitNewComment: ({ token, id, newComment }) =>
-      dispatch(SubmitNewCommentAction({ token, id, newComment })).then(() =>
-        dispatch(FetchProductComments(id))
+    submitNewComment: ({ token, product_id, newComment }) =>{
+      dispatch(SubmitNewCommentAction({ token, product_id, newComment })).then(() =>
+        dispatch(FetchProductComments(product_id))
+      )},
+    deleteComment: ({ product_id, comment_id, token }) =>
+      dispatch(DeleteCommentAction({ comment_id, token })).then(() =>
+        dispatch(FetchProductComments(product_id))
       )
   };
 };

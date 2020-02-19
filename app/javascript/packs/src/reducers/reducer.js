@@ -6,14 +6,16 @@ import {
   FETCH_PRODUCT_COMMENTS,
   ADD_FLASH,
   REMOVE_FLASH,
-  FETCH_MY_PRODUCTS
+  FETCH_MY_PRODUCTS,
+  FETCH_USER_DETAILS
 } from "../actions/types";
 
 const initial_states = {
   messages: [],
   products: [],
   myProducts: [],
-  comments: []
+  comments: [],
+  userDetails:{products:[]}
 };
 
 const reducer = (state = initial_states, action) => {
@@ -50,7 +52,12 @@ const reducer = (state = initial_states, action) => {
       return Object.assign({}, state, { myProducts: action.products });
       break;
     case FETCH_PRODUCT_COMMENTS:
-      return Object.assign({}, state, { comments: action.comments });
+      let { comments } = action;
+      return Object.assign({}, state, { comments });
+      break;
+    case FETCH_USER_DETAILS:
+      let { userDetails } = action;
+      return Object.assign({}, state, { userDetails });
       break;
     default:
       return state;

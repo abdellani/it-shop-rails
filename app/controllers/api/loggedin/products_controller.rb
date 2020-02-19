@@ -13,6 +13,7 @@ class Api::Loggedin::ProductsController < ApplicationController
     product = current_user.products.find_by_id(params[:id])
     #ADD depends on destroy
     product.photos.each{|photo| photo.destroy}
+    product.comments.each{|comment| comment.destroy}
     product.destroy
     render json: { status: 200,
                   message: "Product deleted successfully" }

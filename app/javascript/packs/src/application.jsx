@@ -15,6 +15,7 @@ import ProductDetailsPage from "./containers/ProductDetailsPage";
 import Flash from "./components/Flash";
 import Navbar from "./components/Navbar";
 import MyProductsPage from "./containers/MyProductsPage"
+import UserPage from "./containers/UserPage"
 
 const Application = props => (
   <Router>
@@ -35,10 +36,11 @@ const Application = props => (
           <Route path="/products/new" 
           component={ props => <ProtectedRoute {...props} Component={CreateProductPage}/>} 
           />
-          <Route path="/products/mine" 
+          <Route path="/user/products" 
           component={ props => <ProtectedRoute {...props} Component={MyProductsPage}/>} 
           /> 
-          <Route path="/products/:id" component={ProductDetailsPage} />
+          <Route path="/products/:product_id" component={ProductDetailsPage} />
+          <Route path="/users/:id" component={UserPage} />
           <Route>
             <ProductsPage />
           </Route>

@@ -1,13 +1,14 @@
 import React from "react";
 import ProductPhoto from "./ProductPhoto";
+import { Link } from "react-router-dom";
 const ProductDetails = props => (
   <div className="col-md-8 my-4">
-    {props.photos.length > 0 && 
-    <ProductPhoto 
-    {...props.photos[0]}
-     style={{width:"500px",height:"500px"}}
-     />
-     }
+    {props.photos.length > 0 && (
+      <ProductPhoto
+        {...props.photos[0]}
+        style={{ width: "500px", height: "500px" }}
+      />
+    )}
     <div className="my-3">
       <table className="table table-hover">
         <colgroup>
@@ -38,7 +39,9 @@ const ProductDetails = props => (
           <tr>
             <td>Provider</td>
             <td>
-              <span className="font-weight-bolder">@{props.owner.name}</span>
+              <Link className="text-decoration-none" to={`/users/${props.owner.id}`}>
+                <span className="font-weight-bolder text-dark">@{props.owner.name}</span>
+              </Link>
             </td>
           </tr>
           <tr>

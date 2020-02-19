@@ -6,7 +6,7 @@ class Api::Products::CommentsController < ApplicationController
         status: 200,
         id: product.id,
         comments: product.comments.as_json({
-          only: [:content,:created_at],
+          only: [:content,:created_at,:id],
           include: [
             owner: { only: [:id, :name] },
           ],
