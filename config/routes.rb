@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:destroy]
     namespace :loggedin do
       resources :products, only: [:index, :destroy]
+      resources :comments, only: [ :update]
     end
   end
   root "pages#index"

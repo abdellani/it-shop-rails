@@ -4,7 +4,7 @@ module Authentication
   class TokenStrategy < Warden::Strategies::Base
     def authenticate!
       #TODO check if the payload is a valid json
-      payload = (request.request_method == "POST" && JSON.parse(request.body.read)) ||
+      payload = ( ["POST","PUT"].include?(request.request_method)  && JSON.parse(request.body.read)) ||
                 (["GET","DELETE"].include?(request.request_method)  && request.params)
       if payload["token"]
         jwt = JWT.decode(payload["token"], ENV["JWT_PASSWORD"], "HS256").first
