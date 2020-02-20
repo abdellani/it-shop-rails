@@ -50,3 +50,7 @@ GET http://127.0.0.1:3000/api/users/1
 GET http://127.0.0.1:3000/api/loggedin/notifications/count
 #######
 GET http://127.0.0.1:3000/api/loggedin/notifications
+
+###
+
+GET http://127.0.0.1:3000/api/products/5/visits

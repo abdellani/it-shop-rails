@@ -9,9 +9,17 @@ class Api::ProductsController < ApplicationController
     }
   end
   def show
+    product=Product.find_by_id(params[:id])
+    ip = request.remote_ip
+    #TODO need additional verifications
+    #TODO if the owner of the product, no need to save the visit
+    if ip != "127.0.0.1"
+      visit=product.visits.create({ip:ip})
+      IpDetails.get_details(visit)
+    end
     render json: {
       status: 200,
-      product: Product.find_by_id(params[:id]).as_json(
+      product: product.as_json(
         include:[
           #TODO move photo to api/products/photos or send filename of the selected photo
           photos:{only:[:id]},

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_20_075003) do
+ActiveRecord::Schema.define(version: 2020_02_20_150806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,9 +63,23 @@ ActiveRecord::Schema.define(version: 2020_02_20_075003) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "visits", force: :cascade do |t|
+    t.bigint "product_id"
+    t.string "ip"
+    t.date "date"
+    t.string "country"
+    t.string "city"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_visits_on_product_id"
+  end
+
   add_foreign_key "comments", "products"
   add_foreign_key "comments", "users", column: "owner_id"
   add_foreign_key "notifications", "users"
   add_foreign_key "photos", "products"
   add_foreign_key "products", "users", column: "owner_id"
+  add_foreign_key "visits", "products"
 end

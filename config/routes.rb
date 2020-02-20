@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :photos, only: [:show]
     resources :products, only: [:index, :create, :show], module: :products do
       resources :comments, only: [:index, :create]
+      resources :visits, only: [:index]
     end
     resources :sessions, only: [:create, :destroy]
     resources :users, only: [:create, :show]

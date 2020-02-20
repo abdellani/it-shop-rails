@@ -17,7 +17,8 @@ const initial_states = {
   myProducts: [],
   comments: [],
   userDetails: { products: [] },
-  notifications: { count: 0, notifications: [] }
+  notifications: { count: 0, notifications: [] },
+  visits:[]
 };
 //TODO Refactor the reducer (use combineReducer)
 const reducer = (state = initial_states, action) => {
