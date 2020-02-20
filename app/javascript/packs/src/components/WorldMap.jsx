@@ -28,6 +28,7 @@ class WorldMap extends React.Component {
     );
   }
   render() {
+    let { visits } = this.props;
     let { geographies, projection } = this.state;
     if (geographies)
       return (
@@ -41,18 +42,22 @@ class WorldMap extends React.Component {
                 fill="#888"
                 stroke="#000"
                 strokeWidth={0.5}
-
               />
             ))}
           </g>
           <g className="markers">
-            <circle
-              cx={projection([0, 0])[0]}
-              cy={projection([0, 0])[1]}
-              r={10}
-              fill="#00f"
-              className="marker"
-            />
+            {
+              visits.map((visit,index)=>
+              <circle
+                key={index}
+                cx={projection([visit["longitude"], visit["latitude"]])[0]}
+                cy={projection([visit["longitude"], visit["latitude"]])[1]}
+                r={10}
+                fill="#0f0"
+                className="marker"
+              />
+              )
+            }
           </g>
         </svg>
       );

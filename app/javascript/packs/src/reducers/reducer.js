@@ -8,7 +8,8 @@ import {
   SET_USER_DETAILS,
   ADD_FLASH,
   REMOVE_FLASH,
-  SET_NOTIFICATIONS_COUNT
+  SET_NOTIFICATIONS_COUNT,
+  SET_VISITS
 } from "../actions/types";
 // import { combineReducer } from "redux";
 const initial_states = {
@@ -18,24 +19,20 @@ const initial_states = {
   comments: [],
   userDetails: { products: [] },
   notifications: { count: 0, notifications: [] },
-  visits:[]
+  visits: []
 };
 //TODO Refactor the reducer (use combineReducer)
 const reducer = (state = initial_states, action) => {
   switch (action.type) {
     case SET_NOTIFICATIONS:
-      return Object.assign(
-        {},
-        state,
-        {notifications : notifications(state["notifications"], action)}
-      );
+      return Object.assign({}, state, {
+        notifications: notifications(state["notifications"], action)
+      });
       break;
     case SET_NOTIFICATIONS_COUNT:
-      return Object.assign(
-        {},
-        state,
-        {notifications :notifications(state["notifications"], action)}
-      );
+      return Object.assign({}, state, {
+        notifications: notifications(state["notifications"], action)
+      });
       break;
     case LOGIN:
       return Object.assign({}, state, { id: action.id, token: action.token });
@@ -71,13 +68,17 @@ const reducer = (state = initial_states, action) => {
       let { userDetails } = action;
       return Object.assign({}, state, { userDetails });
       break;
+    case SET_VISITS:
+      let { visits } = action;
+      return Object.assign({}, state, { visits });
+      break;
     default:
       return state;
       break;
   }
 };
 
-const notifications = (state , action) => {
+const notifications = (state, action) => {
   switch (action.type) {
     case SET_NOTIFICATIONS:
       let { notifications } = action;

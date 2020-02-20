@@ -10,7 +10,8 @@ const MyProducts = ({ myProducts,deleteProduct }) => (
           <th>Name</th>
           <th>Category</th>
           <th>Price</th>
-          <th>Details</th>
+          <th>Statistics</th>
+          <th>Page</th>
           <th>Delete</th>
         </tr>
       </thead>
@@ -21,6 +22,14 @@ const MyProducts = ({ myProducts,deleteProduct }) => (
             <td>{product.name}</td>
             <td>{product.category}</td>
             <td>{product.price}</td>
+            <td>
+              <Link
+                to={`/user/products/${product.id}/visits`}
+                className="btn btn-success"
+              >
+                Statistics
+              </Link>
+            </td>
             <td>
               <Link
                 to={`/products/${product.id}`}
