@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     namespace :loggedin do
       resources :products, only: [:index, :destroy]
       resources :comments, only: [ :update]
+      get "notifications/count", to: "notifications#count"
+      resources :notifications, only: [:index]
     end
   end
   root "pages#index"

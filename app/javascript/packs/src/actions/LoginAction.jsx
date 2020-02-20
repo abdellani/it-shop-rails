@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LOGIN, ADD_NOTIFICATION, ADD_FLASH } from "../actions/types";
+import { LOGIN,  ADD_FLASH } from "../actions/types";
 const LoginAction = props => dispatch => {
   let { email, password } = props;
   axios

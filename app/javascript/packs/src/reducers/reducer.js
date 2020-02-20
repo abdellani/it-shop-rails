@@ -1,37 +1,48 @@
 import {
   LOGIN,
-  ADD_NOTIFICATION,
-  FETCH_PRODUCTS,
-  FETCH_PRODUCT_DETAILS,
-  FETCH_PRODUCT_COMMENTS,
+  SET_NOTIFICATIONS,
+  SET_PRODUCTS,
+  SET_MY_PRODUCTS,
+  SET_PRODUCT_DETAILS,
+  SET_PRODUCT_COMMENTS,
+  SET_USER_DETAILS,
   ADD_FLASH,
   REMOVE_FLASH,
-  FETCH_MY_PRODUCTS,
-  FETCH_USER_DETAILS
+  SET_NOTIFICATIONS_COUNT
 } from "../actions/types";
-
+// import { combineReducer } from "redux";
 const initial_states = {
   messages: [],
   products: [],
   myProducts: [],
   comments: [],
-  userDetails:{products:[]}
+  userDetails: { products: [] },
+  notifications: { count: 0, notifications: [] }
 };
-
+//TODO Refactor the reducer (use combineReducer)
 const reducer = (state = initial_states, action) => {
   switch (action.type) {
+    case SET_NOTIFICATIONS:
+      return Object.assign(
+        {},
+        state,
+        {notifications : notifications(state["notifications"], action)}
+      );
+      break;
+    case SET_NOTIFICATIONS_COUNT:
+      return Object.assign(
+        {},
+        state,
+        {notifications :notifications(state["notifications"], action)}
+      );
+      break;
     case LOGIN:
       return Object.assign({}, state, { id: action.id, token: action.token });
       break;
-    case ADD_NOTIFICATION:
-      return Object.assign({}, state, {
-        notifications: [...state["notifications"], action.message]
-      });
-      break;
-    case FETCH_PRODUCTS:
+    case SET_PRODUCTS:
       return Object.assign({}, state, { products: action.products });
       break;
-    case FETCH_PRODUCT_DETAILS:
+    case SET_PRODUCT_DETAILS:
       return Object.assign({}, state, { product: action.product });
       break;
     case ADD_FLASH:
@@ -48,14 +59,14 @@ const reducer = (state = initial_states, action) => {
         messages: state["messages"].filter(message => message.id != action.id)
       });
       break;
-    case FETCH_MY_PRODUCTS:
+    case SET_MY_PRODUCTS:
       return Object.assign({}, state, { myProducts: action.products });
       break;
-    case FETCH_PRODUCT_COMMENTS:
+    case SET_PRODUCT_COMMENTS:
       let { comments } = action;
       return Object.assign({}, state, { comments });
       break;
-    case FETCH_USER_DETAILS:
+    case SET_USER_DETAILS:
       let { userDetails } = action;
       return Object.assign({}, state, { userDetails });
       break;
@@ -64,4 +75,22 @@ const reducer = (state = initial_states, action) => {
       break;
   }
 };
+
+const notifications = (state , action) => {
+  switch (action.type) {
+    case SET_NOTIFICATIONS:
+      let { notifications } = action;
+      return Object.assign({}, state, { notifications });
+      break;
+    case SET_NOTIFICATIONS_COUNT:
+      let { count } = action;
+      return Object.assign({}, state, { count });
+      break;
+    default:
+      return state;
+      break;
+  }
+};
+// = combineReducer({notifications})
+
 export default reducer;

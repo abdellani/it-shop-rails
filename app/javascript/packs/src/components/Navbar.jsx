@@ -1,28 +1,37 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import FetchNotificationsCount from "../actions/FetchNotificationsCountAction";
 
-const ProtectedItems = () => (
-  <li className="nav-item dropdown active">
-    <a
-      className="nav-link dropdown-toggle"
-      href="#"
-      role="button"
-      data-toggle="dropdown"
-      aria-haspopup="true"
-      aria-expanded="false"
-    >
-      Products
-    </a>
-    <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <Link className="dropdown-item" to="/products/new">
-        Add new product
+const ProtectedItems = ({ notificationsCount }) => (
+  <Fragment>
+    <li className="nav-item dropdown active">
+      <a
+        className="nav-link dropdown-toggle"
+        href="#"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Products
+      </a>
+      <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <Link className="dropdown-item" to="/products/new">
+          Add new product
+        </Link>
+        <Link className="dropdown-item" to="/user/products">
+          My products
+        </Link>
+      </div>
+    </li>
+    <li className="nav-item active">
+      <Link className="nav-link" to="/user/notifications">
+        Notifications{" "}
+        <span className=" badge badge-danger">{notificationsCount}</span>
       </Link>
-      <Link className="dropdown-item" to="/user/products">
-        My products
-      </Link>
-    </div>
-  </li>
+    </li>
+  </Fragment>
 );
 const GuestItems = () => (
   <li className="nav-item dropdown active">
@@ -48,6 +57,28 @@ const GuestItems = () => (
   </li>
 );
 class Navbar extends React.Component {
+  constructor() {
+    super();
+    this.periodicCheckNotifcationCount = setInterval(
+      () => this.checkNotifcationCount(),
+      3000
+    );
+  }
+  componentDidUpdate() {
+    let { token } = this.props;
+    if (!!token) {
+      this.props.fetchNotificationsCount({ token });
+    }
+  }
+  checkNotifcationCount() {
+    let { token } = this.props;
+    if (!!token) {
+      this.props.fetchNotificationsCount({ token });
+    }
+  }
+  componentWillUnmount() {
+    clearInterval(this.periodicCheckNotifcationCount);
+  }
   render() {
     let { isAuthenticated } = this.props;
     return (
@@ -73,7 +104,7 @@ class Navbar extends React.Component {
                 Home
               </Link>
             </li>
-            {isAuthenticated && <ProtectedItems />}
+            {isAuthenticated && <ProtectedItems {...this.props} />}
             {!isAuthenticated && <GuestItems />}
           </ul>
         </div>
@@ -83,9 +114,19 @@ class Navbar extends React.Component {
 }
 
 const mapStateToProps = state => {
-  let { token } = state;
+  let { token, notifications } = state;
+  let { count } = notifications;
   return {
-    isAuthenticated: !!token ? true : false
+    token,
+    isAuthenticated: !!token ? true : false,
+    notificationsCount: count
   };
 };
-export default connect(mapStateToProps, false)(Navbar);
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchNotificationsCount: ({ token }) => {
+      dispatch(FetchNotificationsCount({ token }));
+    }
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

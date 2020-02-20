@@ -1,12 +1,12 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
+import DeleteCommentAction from "../actions/DeleteCommentAction";
 import FetchProductDetailsAction from "../actions/FetchProductDetailsAction";
-import FetchProductComments from "../actions/FetchProductCommentsAction";
+import FetchProductCommentsAction from "../actions/FetchProductCommentsAction";
+import SubmitNewCommentAction from "../actions/SubmitNewCommentAction";
+import UpdateCommentAction from "../actions/UpdateCommentAction";
 import ProductDetails from "../components/ProductDetails";
 import ProductComments from "../components/ProductComments";
-import SubmitNewCommentAction from "../actions/SubmitNewCommentAction";
-import DeleteCommentAction from "../actions/DeleteCommentAction";
-import UpdateCommentAction from "../actions/UpdateCommentAction";
 class ProductDetailsPage extends React.Component {
   constructor() {
     super();
@@ -26,7 +26,7 @@ class ProductDetailsPage extends React.Component {
   }
   submitUpdatedComment() {
     let { token } = this.props;
-    let { selectedCommentToUpdate, updatedComment,product_id } = this.state;
+    let { selectedCommentToUpdate, updatedComment, product_id } = this.state;
     this.setState({
       selectedCommentToUpdate: -1,
       updatedComment: ""
@@ -107,19 +107,19 @@ const mapStatetoProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchProductDetails: id => dispatch(FetchProductDetailsAction(id)),
-    fetchProductComments: id => dispatch(FetchProductComments(id)),
+    fetchProductComments: id => dispatch(FetchProductCommentsAction(id)),
     submitNewComment: ({ token, product_id, newComment }) => {
       dispatch(
         SubmitNewCommentAction({ token, product_id, newComment })
-      ).then(() => dispatch(FetchProductComments(product_id)));
+      ).then(() => dispatch(FetchProductCommentsAction(product_id)));
     },
     deleteComment: ({ product_id, comment_id, token }) =>
       dispatch(DeleteCommentAction({ comment_id, token })).then(() =>
-        dispatch(FetchProductComments(product_id))
+        dispatch(FetchProductCommentsAction(product_id))
       ),
     updateCommentAction: ({ token, product_id, comment_id, content }) =>
       dispatch(UpdateCommentAction({ token, comment_id, content })).then(() =>
-        dispatch(FetchProductComments(product_id))
+        dispatch(FetchProductCommentsAction(product_id))
       )
   };
 };

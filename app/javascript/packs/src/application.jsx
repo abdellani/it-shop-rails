@@ -7,15 +7,16 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import LoginPage from "./containers/LoginPage";
 import SignupPage from "./containers/SignupPage";
 import GuestRoute from "./containers/GuestRoute";
-import ProtectedRoute from "./containers/ProtectedRoute"
+import ProtectedRoute from "./containers/ProtectedRoute";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import ProductsPage from "./containers/ProductsPage";
 import CreateProductPage from "./containers/CreateProductPage";
 import ProductDetailsPage from "./containers/ProductDetailsPage";
 import Flash from "./components/Flash";
 import Navbar from "./components/Navbar";
-import MyProductsPage from "./containers/MyProductsPage"
-import UserPage from "./containers/UserPage"
+import MyProductsPage from "./containers/MyProductsPage";
+import UserPage from "./containers/UserPage";
+import NotificationsPage from "./containers/NotificationsPage";
 
 const Application = props => (
   <Router>
@@ -33,12 +34,24 @@ const Application = props => (
           <Route path="/signup">
             <GuestRoute Component={SignupPage} />
           </Route>
-          <Route path="/products/new" 
-          component={ props => <ProtectedRoute {...props} Component={CreateProductPage}/>} 
+          <Route
+            path="/products/new"
+            component={props => (
+              <ProtectedRoute {...props} Component={CreateProductPage} />
+            )}
           />
-          <Route path="/user/products" 
-          component={ props => <ProtectedRoute {...props} Component={MyProductsPage}/>} 
-          /> 
+          <Route
+            path="/user/products"
+            component={props => (
+              <ProtectedRoute {...props} Component={MyProductsPage} />
+            )}
+          />
+          <Route
+            path="/user/notifications"
+            component={props => (
+              <ProtectedRoute {...props} Component={NotificationsPage} />
+            )}
+          />
           <Route path="/products/:product_id" component={ProductDetailsPage} />
           <Route path="/users/:id" component={UserPage} />
           <Route>
