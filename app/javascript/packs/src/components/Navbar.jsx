@@ -61,7 +61,7 @@ class Navbar extends React.Component {
     super();
     this.periodicCheckNotifcationCount = setInterval(
       () => this.checkNotifcationCount(),
-      3000
+      60000
     );
   }
   componentDidUpdate() {

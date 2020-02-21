@@ -61,7 +61,7 @@ class WorldMap extends React.Component {
           </g>
         </svg>
       );
-    else return <div>Loading !</div>;
+    else return <div></div>;
   }
 }
 
