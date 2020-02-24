@@ -3,12 +3,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import $ from "jquery";
 import Popper from "popper.js";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
 import LoginPage from "./containers/LoginPage";
 import SignupPage from "./containers/SignupPage";
 import GuestRoute from "./containers/GuestRoute";
 import ProtectedRoute from "./containers/ProtectedRoute";
-import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import ProductsPage from "./containers/ProductsPage";
 import CreateProductPage from "./containers/CreateProductPage";
 import ProductDetailsPage from "./containers/ProductDetailsPage";
@@ -18,6 +18,7 @@ import MyProductsPage from "./containers/MyProductsPage";
 import UserPage from "./containers/UserPage";
 import NotificationsPage from "./containers/NotificationsPage";
 import ProductsVisitsPage from "./containers/ProductsVisitsPage";
+import EditProductPage from "./containers/EditProductPage"
 
 const Application = props => (
   <Router>
@@ -55,6 +56,13 @@ const Application = props => (
               <ProtectedRoute {...props} Component={NotificationsPage} />
             )}
           />
+          <Route
+            path="/products/:product_id/edit"
+            component={props => (
+              <ProtectedRoute {...props} Component={EditProductPage} />
+            )}
+          />
+          EditProductPage
           <Route path="/products/:product_id" component={ProductDetailsPage} />
           <Route path="/users/:id" component={UserPage} />
           <Route>

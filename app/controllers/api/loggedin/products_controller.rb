@@ -8,6 +8,13 @@ class Api::Loggedin::ProductsController < ApplicationController
     }
   end
 
+  def update
+    authenticate!
+    product=current_user.products.find_by_id(params[:id])
+    product.update_attributes(product_params)
+    render json: {status: 200, message: "Product updated successfully !"}, status:200
+  end
+
   def destroy
     authenticate!
     product = current_user.products.find_by_id(params[:id])
@@ -17,5 +24,9 @@ class Api::Loggedin::ProductsController < ApplicationController
     product.destroy
     render json: { status: 200,
                   message: "Product deleted successfully" }
+  end
+  private
+  def product_params
+    params.require(:product).permit(:name,:description,:price,:quantity,:category)
   end
 end

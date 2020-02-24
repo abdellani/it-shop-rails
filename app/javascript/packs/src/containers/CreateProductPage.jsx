@@ -1,5 +1,5 @@
 import React from "react";
-import CreateProductForm from "../components/CreateProductForm";
+import CreateProductForm from "../components/ProductForm";
 import { connect } from "react-redux";
 import CreateProductAction from "../actions/Products/CreateProductAction";
 
@@ -29,7 +29,6 @@ class LoginPage extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let { token,history } = this.props;
-    console.log(this.props)
     let { photo } = this.state;
     let reader = new FileReader();
     reader.onloadend = e => {

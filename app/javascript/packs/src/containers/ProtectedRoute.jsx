@@ -5,7 +5,7 @@ import {ADD_FLASH} from "../actions/types.js"
 class ProtectedRoute extends React.Component {
   render() {
     let { token, Component } = this.props;
-    if (token) return <Component />;
+    if (token) return <Component {...this.props} />;
     else {
       this.props.addFlash({messageType:"error",message:"You need to be authenticated !"})
       return <Redirect to="/" />;

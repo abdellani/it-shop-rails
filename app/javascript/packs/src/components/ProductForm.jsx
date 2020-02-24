@@ -71,7 +71,7 @@ const ProductForm = ({
           onChange={handleChange}
         />
       </div>
-      <input type="submit" onClick={handleSubmit} />
+      <input className="btn btn-primary btn-lg" value="Submit" type="submit" onClick={handleSubmit} />
     </form>
   </div>
 );

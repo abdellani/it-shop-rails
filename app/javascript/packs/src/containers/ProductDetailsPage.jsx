@@ -58,7 +58,7 @@ class ProductDetailsPage extends React.Component {
   componentDidMount() {
     let { product_id } = this.props.match.params;
     this.setState({ product_id });
-    this.props.fetchProductDetails(product_id);
+    this.props.fetchProductDetails({product_id});
     this.props.fetchProductComments(product_id);
   }
   render() {
@@ -106,7 +106,7 @@ const mapStatetoProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    fetchProductDetails: id => dispatch(FetchProductDetailsAction(id)),
+    fetchProductDetails: ({product_id}) => dispatch(FetchProductDetailsAction({product_id})),
     fetchProductComments: id => dispatch(FetchProductCommentsAction(id)),
     submitNewComment: ({ token, product_id, newComment }) => {
       dispatch(
