@@ -1,11 +1,11 @@
 import axios from "axios"
 
 const UpdateProductAction =  props => dispatch => {
-  let { token, product_id,name, description, price, quantity, category, photo } = props;
+  let { token, product_id,name, description, price, category, photo } = props;
   axios
     .put(`/api/loggedin/products/${product_id}`, {
       token,
-      product: { name, description, price, quantity, category, photo }
+      product: { name, description, price, category, photo }
     })
     .then(response => {
       let { status, message } = response.data;

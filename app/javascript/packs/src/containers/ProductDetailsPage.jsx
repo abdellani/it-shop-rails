@@ -7,6 +7,7 @@ import SubmitNewCommentAction from "../actions/Comments/SubmitNewCommentAction";
 import UpdateCommentAction from "../actions/Comments/UpdateCommentAction";
 import ProductDetails from "../components/ProductDetails";
 import ProductComments from "../components/ProductComments";
+import SumbitNewOrderAction from "../actions/Order/SumbitNewOrderAction";
 class ProductDetailsPage extends React.Component {
   constructor() {
     super();
@@ -15,7 +16,8 @@ class ProductDetailsPage extends React.Component {
       selectedCommentToUpdate: -1,
       loading: true,
       newComment: "",
-      updatedComment: ""
+      updatedComment: "",
+      quantity: 1
     };
   }
   selectCommentToUpdate({ comment_id, content }) {
@@ -43,6 +45,11 @@ class ProductDetailsPage extends React.Component {
       [e.target.id]: e.target.value
     });
   }
+  submitOrder(e) {
+    let { token } = this.props;
+    let { product_id,quantity } = this.state;
+    this.props.sumbitNewOrderAction(token,product_id,quantity);
+  }
   handleSubmit(e) {
     e.preventDefault();
     let { token } = this.props;
@@ -58,17 +65,27 @@ class ProductDetailsPage extends React.Component {
   componentDidMount() {
     let { product_id } = this.props.match.params;
     this.setState({ product_id });
-    this.props.fetchProductDetails({product_id});
+    this.props.fetchProductDetails({ product_id });
     this.props.fetchProductComments(product_id);
   }
   render() {
-    let { product } = this.props;
-    let { newComment, updatedComment, selectedCommentToUpdate } = this.state;
+    let { product, token } = this.props;
+    let {
+      newComment,
+      updatedComment,
+      selectedCommentToUpdate,
+      quantity
+    } = this.state;
     if (product) {
       return (
         <Fragment>
           <div className="row justify-content-center w-100">
-            <ProductDetails {...product} />
+            <ProductDetails
+              {...{ token, quantity }}
+              {...product}
+              handleChange={e => this.handleChange(e)}
+              submitOrder={e => this.submitOrder(e)}
+            />
           </div>
           <div className="row justify-content-center w-100">
             <ProductComments
@@ -106,7 +123,8 @@ const mapStatetoProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    fetchProductDetails: ({product_id}) => dispatch(FetchProductDetailsAction({product_id})),
+    fetchProductDetails: ({ product_id }) =>
+      dispatch(FetchProductDetailsAction({ product_id })),
     fetchProductComments: id => dispatch(FetchProductCommentsAction(id)),
     submitNewComment: ({ token, product_id, newComment }) => {
       dispatch(
@@ -120,7 +138,9 @@ const mapDispatchToProps = dispatch => {
     updateCommentAction: ({ token, product_id, comment_id, content }) =>
       dispatch(UpdateCommentAction({ token, comment_id, content })).then(() =>
         dispatch(FetchProductCommentsAction(product_id))
-      )
+      ),
+    sumbitNewOrderAction: ({ token, product_id, quantity }) =>
+      dispatch(SumbitNewOrderAction({ token, product_id, quantity }))
   };
 };
 export default connect(mapStatetoProps, mapDispatchToProps)(ProductDetailsPage);

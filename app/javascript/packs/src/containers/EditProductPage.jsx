@@ -11,7 +11,6 @@ class EditProductPage extends React.Component {
       name: "",
       description: "",
       price: "",
-      quantity: "",
       category: "",
       photo: []
     };
@@ -21,8 +20,8 @@ class EditProductPage extends React.Component {
     this.setState({product_id})
     this.props.fetchProductDetailsAction({ product_id }).then(() => {
       let { product } = this.props;
-      let { name, description, price, quantity, category, photo } = product;
-      this.setState({ name, description, price, quantity, category, photo });
+      let { name, description, price,  category, photo } = product;
+      this.setState({ name, description, price, category, photo });
     });
   }
   handleChange(e) {

@@ -6,7 +6,6 @@ const ProductForm = ({
   name,
   description,
   price,
-  quantity,
   category
 }) => (
   <div className="col-8 my-4">
@@ -38,16 +37,6 @@ const ProductForm = ({
           id="price"
           className="form-control"
           value={price}
-          onChange={handleChange}
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="quantity">Available quantity</label>
-        <input
-          type="number"
-          id="quantity"
-          className="form-control"
-          value={quantity}
           onChange={handleChange}
         />
       </div>

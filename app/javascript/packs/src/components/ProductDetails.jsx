@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ProductPhoto from "./ProductPhoto";
 import { Link } from "react-router-dom";
 const ProductDetails = props => (
@@ -29,18 +29,19 @@ const ProductDetails = props => (
             <td>{props.category}</td>
           </tr>
           <tr>
-            <td>Quantity</td>
-            <td>{props.quantity ? props.quantity : "Unavailable "}</td>
-          </tr>
-          <tr>
             <td>Price</td>
             <td>{props.price} $</td>
           </tr>
           <tr>
             <td>Provider</td>
             <td>
-              <Link className="text-decoration-none" to={`/users/${props.owner.id}`}>
-                <span className="font-weight-bolder text-dark">@{props.owner.name}</span>
+              <Link
+                className="text-decoration-none"
+                to={`/users/${props.owner.id}`}
+              >
+                <span className="font-weight-bolder text-dark">
+                  @{props.owner.name}
+                </span>
               </Link>
             </td>
           </tr>
@@ -53,9 +54,92 @@ const ProductDetails = props => (
           </tr>
         </tbody>
       </table>
-      <button type="button" className="btn btn-primary btn-lg btn-block">
-        Add to basket
-      </button>
+      {props.token && (
+        <Fragment>
+          <button
+            type="button"
+            className="btn btn-primary btn-lg btn-block"
+            data-toggle="modal"
+            data-target="#orderModal"
+          >
+            Order the product
+          </button>
+          <Modal {...props} />
+        </Fragment>
+      )}
+    </div>
+  </div>
+);
+const Modal = ({ price, quantity, handleChange, submitOrder }) => (
+  <div
+    className="modal fade"
+    id="orderModal"
+    tabIndex="-1"
+    role="dialog"
+    aria-labelledby="orderModalLabel"
+    aria-hidden="true"
+  >
+    <div className="modal-dialog" role="document">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h5 className="modal-title" id="orderModalLabel">
+            Order
+          </h5>
+          <button
+            type="button"
+            className="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div className="modal-body">
+          <div className="form-group row px-3">
+            <label className="col-sm-3" htmlFor="description">
+              Quantity
+            </label>
+            <div className="col-sm-9">
+              <input
+                type="number"
+                min="1"
+                id="quantity"
+                className="form-control"
+                value={quantity}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div className="form-group row px-3">
+            <label className="col-sm-3" htmlFor="description">
+              Total price
+            </label>
+            <div className="col-sm-9">
+              <input
+                type="text"
+                min="1"
+                id="quantity"
+                className="form-control"
+                value={`${price * quantity}$`}
+                onChange={() => {}}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="modal-footer">
+          <button type="button" className="btn btn-danger" data-dismiss="modal">
+            Cancel
+          </button>
+          <button
+            type="button"
+            className="btn btn-success"
+            data-dismiss="modal"
+            onClick={e => submitOrder(e)}
+          >
+            Order
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 );

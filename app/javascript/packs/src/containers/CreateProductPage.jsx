@@ -10,7 +10,6 @@ class LoginPage extends React.Component {
       name: "",
       description: "",
       price: 1.1,
-      quantity: 1,
       category: "smartphone",
       photo: ""
     };
