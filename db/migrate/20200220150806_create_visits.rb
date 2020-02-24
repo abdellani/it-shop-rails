@@ -7,6 +7,7 @@ class CreateVisits < ActiveRecord::Migration[5.2]
       t.string :city
       t.float :latitude
       t.float :longitude
+      t.datetime :date
 
       t.timestamps
     end
