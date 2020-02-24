@@ -1,7 +1,6 @@
 import React from "react";
 const VisitsPanel = ({ visits }) => (
-  <div>
-    <table className="table table-hover">
+    <table className="w-100 table table-hover">
     <thead>
         <tr>
           <th>Country</th>
@@ -19,7 +18,6 @@ const VisitsPanel = ({ visits }) => (
         ))}
       </tbody>
     </table>
-  </div>
 );
 
 export default VisitsPanel;

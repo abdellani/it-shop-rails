@@ -7,8 +7,8 @@ class LoginPage extends React.Component {
   constructor(){
     super()
     this.state={
-      email:"test@test.com",
-      password:""
+      email:"user1@example.com",
+      password:"123456"
     }
   }
   handleChange(e){

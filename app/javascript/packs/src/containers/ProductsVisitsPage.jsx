@@ -12,9 +12,9 @@ class ProductsVisitsPage extends React.Component {
   render() {
     let { visits } = this.props;
     return (
-      <div className="d-flex flex-column">
-        <WorldMap visits={visits} />
+      <div className="d-flex flex-column w-100 align-items-center">
         <VisitsPanel visits={visits}/>
+        <WorldMap visits={visits} />
       </div>
     );
   }
