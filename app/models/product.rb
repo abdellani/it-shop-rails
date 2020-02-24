@@ -3,4 +3,6 @@ class Product < ApplicationRecord
   has_many :photos
   has_many :comments
   has_many :visits
+  has_many :orders
+  has_many :buyers, through: :orders, source: :owner
 end

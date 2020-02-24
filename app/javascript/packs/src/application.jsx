@@ -19,6 +19,8 @@ import UserPage from "./containers/UserPage";
 import NotificationsPage from "./containers/NotificationsPage";
 import ProductsVisitsPage from "./containers/ProductsVisitsPage";
 import EditProductPage from "./containers/EditProductPage";
+import MyOrdersPage from "./containers/MyOrdersPage"
+import MyRequestsPage from "./containers/MyRequestsPage"
 
 const Application = props => (
   <Router>
@@ -42,10 +44,23 @@ const Application = props => (
               <ProtectedRoute {...props} Component={CreateProductPage} />
             )}
           />
-          {/*TODO protect the route */}
           <Route
-            path="/user/products/:product_id/visits"
-            component={ProductsVisitsPage}
+          path="/user/products/:product_id/visits"
+            component={props => (
+              <ProtectedRoute {...props} Component={ProductsVisitsPage} />
+            )}
+          />
+          <Route
+            path="/user/requestes"
+            component={props => (
+              <ProtectedRoute {...props} Component={MyRequestsPage} />
+            )}
+          />
+          <Route
+            path="/user/orders"
+            component={props => (
+              <ProtectedRoute {...props} Component={MyOrdersPage} />
+            )}
           />
           <Route
             path="/user/products"

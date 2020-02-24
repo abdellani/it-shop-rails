@@ -9,7 +9,9 @@ import {
   ADD_FLASH,
   REMOVE_FLASH,
   SET_NOTIFICATIONS_COUNT,
-  SET_VISITS
+  SET_VISITS,
+  SET_ORDERS,
+  SET_REQUESTS
 } from "../actions/types";
 // import { combineReducer } from "redux";
 const initial_states = {
@@ -19,7 +21,9 @@ const initial_states = {
   comments: [],
   userDetails: { products: [] },
   notifications: { count: 0, notifications: [] },
-  visits: []
+  visits: [],
+  orders: [],
+  requests: []
 };
 //TODO Refactor the reducer (use combineReducer)
 const reducer = (state = initial_states, action) => {
@@ -71,6 +75,14 @@ const reducer = (state = initial_states, action) => {
     case SET_VISITS:
       let { visits } = action;
       return Object.assign({}, state, { visits });
+      break;
+    case SET_ORDERS:
+      let { orders } = action;
+      return Object.assign({}, state, { orders });
+      break;
+    case SET_REQUESTS:
+      let { requests } = action;
+      return Object.assign({}, state, { requests });
       break;
     default:
       return state;

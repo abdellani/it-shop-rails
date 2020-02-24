@@ -7,7 +7,7 @@ import SubmitNewCommentAction from "../actions/Comments/SubmitNewCommentAction";
 import UpdateCommentAction from "../actions/Comments/UpdateCommentAction";
 import ProductDetails from "../components/ProductDetails";
 import ProductComments from "../components/ProductComments";
-import SumbitNewOrderAction from "../actions/Order/SumbitNewOrderAction";
+import SumbitNewOrderAction from "../actions/Orders/SumbitNewOrderAction";
 class ProductDetailsPage extends React.Component {
   constructor() {
     super();
@@ -48,7 +48,7 @@ class ProductDetailsPage extends React.Component {
   submitOrder(e) {
     let { token } = this.props;
     let { product_id,quantity } = this.state;
-    this.props.sumbitNewOrderAction(token,product_id,quantity);
+    this.props.sumbitNewOrderAction({token,product_id,quantity});
   }
   handleSubmit(e) {
     e.preventDefault();

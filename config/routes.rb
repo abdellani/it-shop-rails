@@ -15,6 +15,8 @@ Rails.application.routes.draw do
       resources :comments, only: [ :update]
       get "notifications/count", to: "notifications#count"
       resources :notifications, only: [:index]
+      resources :orders, only: [:index,:create]
+      get 'requests', to: 'orders#requests_index'
     end
   end
   root "pages#index"

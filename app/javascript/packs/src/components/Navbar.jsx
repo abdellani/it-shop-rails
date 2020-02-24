@@ -25,6 +25,26 @@ const ProtectedItems = ({ notificationsCount }) => (
         </Link>
       </div>
     </li>
+    <li className="nav-item dropdown active">
+      <a
+        className="nav-link dropdown-toggle"
+        href="#"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Orders
+      </a>
+      <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <Link className="dropdown-item" to="/user/orders">
+          My orders
+        </Link>
+        <Link className="dropdown-item" to="/user/requestes">
+          Requests
+        </Link>
+      </div>
+    </li>
     <li className="nav-item active">
       <Link className="nav-link" to="/user/notifications">
         Notifications{" "}
