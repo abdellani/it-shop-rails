@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LOGIN,ADD_NOTIFICATION } from "../types";
+import { LOGIN,ADD_FLASH } from "../types";
 const SignupAction = props => dispatch => {
   let { name,email, password,password_confirmation } = props;
   axios
@@ -11,7 +11,7 @@ const SignupAction = props => dispatch => {
         token: response.data.token,
       })
       dispatch({
-        type:ADD_NOTIFICATION,
+        type:ADD_FLASH,
         message:response.data.message 
       })
       ;
