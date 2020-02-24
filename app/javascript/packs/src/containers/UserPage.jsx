@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import FetchUserDetailsAction from "../actions/FetchUserDetailsAction";
+import FetchUserDetailsAction from "../actions/Users/FetchUserDetailsAction";
 import UserDetails from "../components/UserDetails";
 import ProductCard from "../components/ProductCard";
 

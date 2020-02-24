@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_FLASH } from "../actions/types";
+import { ADD_FLASH } from "../types";
 
 const CreateProductAction = props => dispatch => {
   let { token, name, description, price, quantity, category, photo } = props;

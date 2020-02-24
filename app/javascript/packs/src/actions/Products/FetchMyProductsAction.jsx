@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SET_MY_PRODUCTS } from "./types";
+import { SET_MY_PRODUCTS } from "../types";
 const FetchMyProductsAction = ({ token }) => dispatch => {
   axios
     .get(`/api/loggedin/products`, { params: { token } })

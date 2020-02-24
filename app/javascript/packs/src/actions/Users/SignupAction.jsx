@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LOGIN,ADD_NOTIFICATION } from "../actions/types";
+import { LOGIN,ADD_NOTIFICATION } from "../types";
 const SignupAction = props => dispatch => {
   let { name,email, password,password_confirmation } = props;
   axios

@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import DeleteCommentAction from "../actions/DeleteCommentAction";
-import FetchProductDetailsAction from "../actions/FetchProductDetailsAction";
-import FetchProductCommentsAction from "../actions/FetchProductCommentsAction";
-import SubmitNewCommentAction from "../actions/SubmitNewCommentAction";
-import UpdateCommentAction from "../actions/UpdateCommentAction";
+import DeleteCommentAction from "../actions/Comments/DeleteCommentAction";
+import FetchProductDetailsAction from "../actions/Products/FetchProductDetailsAction";
+import FetchProductCommentsAction from "../actions/Comments/FetchProductCommentsAction";
+import SubmitNewCommentAction from "../actions/Comments/SubmitNewCommentAction";
+import UpdateCommentAction from "../actions/Comments/UpdateCommentAction";
 import ProductDetails from "../components/ProductDetails";
 import ProductComments from "../components/ProductComments";
 class ProductDetailsPage extends React.Component {

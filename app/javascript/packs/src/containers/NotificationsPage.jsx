@@ -1,7 +1,7 @@
 import React,{Fragment} from "react";
 import { connect } from "react-redux";
-import FetchNotificationsAction from "../actions/FetchNotificationsAction";
-import FetchNotificationsCountAction from "../actions/FetchNotificationsCountAction";
+import FetchNotificationsAction from "../actions/Notifications/FetchNotificationsAction";
+import FetchNotificationsCountAction from "../actions/Notifications/FetchNotificationsCountAction";
 import Notifications from "../components/Notifications"
 
 class NotificationsPage extends React.Component {

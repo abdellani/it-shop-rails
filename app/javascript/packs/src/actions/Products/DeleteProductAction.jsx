@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_FLASH } from "../actions/types";
+import { ADD_FLASH } from "../types";
 
 const DeleteProductAction = ({ token, id }) => dispatch => {
   return axios

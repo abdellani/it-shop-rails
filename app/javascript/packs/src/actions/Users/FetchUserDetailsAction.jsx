@@ -1,5 +1,5 @@
 import axios from "axios";
-import {SET_USER_DETAILS} from "./types.js"
+import {SET_USER_DETAILS} from "../types.js"
 const FetchUserDetailsAction = ({ id }) => dispatch => {
   axios
     .get(`/api/users/${id}`)

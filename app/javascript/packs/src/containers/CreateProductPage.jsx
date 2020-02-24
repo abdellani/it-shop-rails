@@ -1,7 +1,7 @@
 import React from "react";
 import CreateProductForm from "../components/CreateProductForm";
 import { connect } from "react-redux";
-import CreateProductAction from "../actions/CreateProductAction";
+import CreateProductAction from "../actions/Products/CreateProductAction";
 
 class LoginPage extends React.Component {
   constructor() {

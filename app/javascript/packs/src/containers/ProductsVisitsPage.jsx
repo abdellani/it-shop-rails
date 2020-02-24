@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import FetchProductVisits from "../actions/FetchProductVisitsAction";
+import FetchProductVisits from "../actions/Visits/FetchProductVisitsAction";
 import WorldMap from "../components/WorldMap";
 import VisitsPanel from "../components/VisitsPanel"
 class ProductsVisitsPage extends React.Component {

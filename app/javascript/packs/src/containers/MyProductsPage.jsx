@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import FetchMyProductsAction from "../actions/FetchMyProductsAction";
+import DeleteProductAction from "../actions/Products/DeleteProductAction";
+import FetchMyProductsAction from "../actions/Products/FetchMyProductsAction";
 import MyProducts from "../components/MyProducts";
-import DeleteProductAction from "../actions/DeleteProductAction";
 class MyProductsPage extends React.Component {
   componentDidMount() {
     let { token } = this.props;

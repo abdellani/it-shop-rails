@@ -1,7 +1,7 @@
 import React from "react"
 import SignupForm from "../components/SignupForm"
 import {connect} from "react-redux"
-import SignupAction from "../actions/SignupAction"
+import SignupAction from "../actions/Users/SignupAction"
 class SignupPage extends React.Component {
   constructor(){
     super()

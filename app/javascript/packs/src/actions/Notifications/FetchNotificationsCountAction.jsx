@@ -1,5 +1,5 @@
 import axios from "axios";
-import {SET_NOTIFICATIONS_COUNT} from "./types"
+import {SET_NOTIFICATIONS_COUNT} from "../types"
 const FetchNotificationsCountAction = ({ token }) => dispatch => {
   return axios
     .get("/api/loggedin/notifications/count", { params: { token } })

@@ -1,5 +1,5 @@
 import axios from "axios";
-import {SET_VISITS} from "./types"
+import {SET_VISITS} from "../types"
 const FetchProductVisitsAction = ({ product_id, token }) => dispatch=>{
   return axios
     .get(`/api/products/${product_id}/visits`, { params: { token } }).then(

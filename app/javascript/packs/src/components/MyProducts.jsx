@@ -12,6 +12,7 @@ const MyProducts = ({ myProducts,deleteProduct }) => (
           <th>Price</th>
           <th>Statistics</th>
           <th>Page</th>
+          <th>Edit</th>
           <th>Delete</th>
         </tr>
       </thead>
@@ -36,6 +37,14 @@ const MyProducts = ({ myProducts,deleteProduct }) => (
                 className="btn btn-info"
               >
                 Details
+              </Link>
+            </td>
+            <td>
+              <Link
+                to={`/products/${product.id}/edit`}
+                className="btn btn-warning"
+              >
+                Edit
               </Link>
             </td>
             <td>

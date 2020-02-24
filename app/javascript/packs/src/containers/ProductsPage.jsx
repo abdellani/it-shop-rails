@@ -1,6 +1,6 @@
 import React,{Fragment} from "react";
 import { connect } from "react-redux";
-import FetchProductsAction from "../actions/FetchProductsAction";
+import FetchProductsAction from "../actions/Products/FetchProductsAction";
 import ProductCard from "../components/ProductCard";
 
 class ProductPage extends React.Component {

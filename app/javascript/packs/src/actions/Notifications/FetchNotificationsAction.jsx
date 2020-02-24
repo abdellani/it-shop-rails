@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SET_NOTIFICATIONS } from "./types.js";
+import { SET_NOTIFICATIONS } from "../types.js";
 const FetchNotificationsAction = ({ token }) => dispatch => {
   return axios
     .get("/api/loggedin/notifications", { params: { token } })

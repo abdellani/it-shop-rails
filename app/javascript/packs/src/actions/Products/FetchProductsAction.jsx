@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SET_PRODUCTS } from "./types";
+import { SET_PRODUCTS } from "../types";
 const FetchProductsAction = props => dispatch => {
   axios
     .get("/api/products")
