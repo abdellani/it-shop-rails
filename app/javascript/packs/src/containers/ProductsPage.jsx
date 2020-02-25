@@ -14,12 +14,10 @@ class ProductPage extends React.Component {
     let { products } = this.props;
 
     return (
-      <div className="w-100 row my-3">
+      <div className="d-inline-flex flex-wrap my-3">
         {products &&
           products.map((product, id) => (
-            <div key={id} className="col-md-4 my-2">
-              <ProductCard  {...product} />
-            </div>
+              <ProductCard key={id} {...product} />
           ))}
       </div>
     );

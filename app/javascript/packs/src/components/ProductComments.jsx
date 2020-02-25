@@ -114,7 +114,7 @@ const ProductComments = ({
   selectedCommentToUpdate,
   submitUpdatedComment
 }) => (
-  <div className="col-md-8">
+  <div style={{width:"80%"}}>
     <h3>Comments :</h3>
     {comments.map((comment, index) =>
       comment.id != selectedCommentToUpdate ? (

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const MyProducts = ({ myProducts,deleteProduct }) => (
-  <div className="table-responsive-md">
+  <div className="table-responsive-md w-100">
     <table className="table table-hover">
       <thead>
         <tr>

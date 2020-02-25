@@ -9,7 +9,7 @@ class LoginPage extends React.Component {
     this.state = {
       name: "",
       description: "",
-      price: 1.1,
+      price: 250,
       category: "smartphone",
       photo: ""
     };

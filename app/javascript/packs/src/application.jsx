@@ -25,11 +25,11 @@ import MyRequestsPage from "./containers/MyRequestsPage"
 const Application = props => (
   <Router>
     <Navbar />
-    <main className="container">
-      <div className="w-100 d-flex flex-column align-items-center justify-content-center">
+    <main className="container-fluid">
+      <div className="d-flex flex-column align-items-center justify-content-center w-100">
         <Flash />
       </div>
-      <div className="row justify-content-center">
+      <div className="d-flex flex-wrap justify-content-center">
         <Switch>
           <Route
             path="/login"

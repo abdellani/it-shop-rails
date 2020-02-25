@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import ProductPhoto from "./ProductPhoto";
 import { Link } from "react-router-dom";
 const ProductDetails = props => (
-  <div className="col-md-8 my-4">
+  <div className="shadow-lg my-4 px-3" style={{width:"80%"}}>
     {props.photos.length > 0 && (
       <ProductPhoto
         {...props.photos[0]}

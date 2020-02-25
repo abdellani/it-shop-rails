@@ -8,8 +8,8 @@ const ProductForm = ({
   price,
   category
 }) => (
-  <div className="col-8 my-4">
-    <form>
+  <div className="col-9 my-4 p-3 shadow-lg">
+    <form className="">
       <div className="form-group">
         <label htmlFor="Name">Name of product</label>
         <input

@@ -79,15 +79,12 @@ class ProductDetailsPage extends React.Component {
     if (product) {
       return (
         <Fragment>
-          <div className="row justify-content-center w-100">
             <ProductDetails
               {...{ token, quantity }}
               {...product}
               handleChange={e => this.handleChange(e)}
               submitOrder={e => this.submitOrder(e)}
             />
-          </div>
-          <div className="row justify-content-center w-100">
             <ProductComments
               {...this.props}
               newComment={newComment}
@@ -101,7 +98,6 @@ class ProductDetailsPage extends React.Component {
               selectedCommentToUpdate={selectedCommentToUpdate}
               submitUpdatedComment={() => this.submitUpdatedComment()}
             />
-          </div>
         </Fragment>
       );
     } else {

@@ -132,9 +132,9 @@ users[0, 5].each do |user|
     product = user.products.new({
       name: Faker::Lorem.sentence(word_count: 3),
       description: Faker::Lorem.paragraph(
-        sentence_count: 2,
+        sentence_count: 5,
         supplemental: false,
-        random_sentences_to_add: 4,
+        random_sentences_to_add: 8,
       ),
       price: ((rand * 1000 + 250) % 1000).to_i,
       category: "smartphone",
