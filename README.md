@@ -7,10 +7,10 @@ You can check for live demo [Here](https://it-shop.herokuapp.com/).
 A plateform where you can sell and buy it devices. Built with Reals/React.
 
 ## Screenshots
-[]("./")
-[]("./")
-[]("./")
-[]("./")
+![Home page](https://raw.githubusercontent.com/abdellani/it-shop/development/docs/screenshots/screenshot1.png)
+![Product details page](https://raw.githubusercontent.com/abdellani/it-shop/development/docs/screenshots/screenshot2.png)
+![My products page](https://raw.githubusercontent.com/abdellani/it-shop/development/docs/screenshots/screenshot3.png)
+![Statistics page](https://raw.githubusercontent.com/abdellani/it-shop/development/docs/screenshots/screenshot4.png)
 
 # Installation
 
