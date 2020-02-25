@@ -1,24 +1,46 @@
-# README
+# Live demo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+You can check for live demo [Here](https://it-shop.herokuapp.com/).
 
-Things you may want to cover:
+# About the program
 
-* Ruby version
+A plateform where you can sell and buy it devices. Built with Reals/React.
 
-* System dependencies
+## Screenshots
+[]("./")
+[]("./")
+[]("./")
+[]("./")
 
-* Configuration
+# Installation
 
-* Database creation
+This project is based on ruby on rails framework. RSpe have been used to implement the different unit and integration tests. To install this project, you'll need to have a running Postgres server in you local computer or network. After cloning the project, you have to run `bundle install` followed by `rails db:migrate`
 
-* Database initialization
+# Configuration
 
-* How to run the test suite
+You'll need to create a `.env` file that will define the following variables.
 
-* Services (job queues, cache servers, search engines, etc.)
+```yml
+DB_HOST="127.0.0.1"
+DB_USERNAME="postgres"
+DB_PASSWORD="mysecretpassword"
+JWT_PASSWORD="mySuperSecretPassword" # A password for coding JWT tokens
+IPSTACK_KEY="YOUR_KEY" # You can get your own key from https://ipstack.com/ 
+```
 
-* Deployment instructions
+# Run the code
 
-* ...
+To run the application in you development environment, you need to run `rails s`.
+To deploy it in heroku, you need first to run `git push heroku master` followed by `heroku run rails db:migrate`
+
+# Get Update
+
+To get the latest updates, you run `git pull origin master`
+
+# Authors
+
+- Mohamed Abdellani -- [User Github link](https://github.com/abdellani)
+
+# Run Tests
+
+The tests are not implement yet.

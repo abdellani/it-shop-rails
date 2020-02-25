@@ -1,4 +1,4 @@
-import React,{Fragment} from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import FetchProductsAction from "../actions/Products/FetchProductsAction";
 import ProductCard from "../components/ProductCard";
@@ -14,11 +14,12 @@ class ProductPage extends React.Component {
     let { products } = this.props;
 
     return (
-      <div className="d-inline-flex flex-wrap my-3">
+      <div
+        className="d-flex flex-wrap justify-content-center my-3"
+        style={{ maxWidth: "72rem" }}
+      >
         {products &&
-          products.map((product, id) => (
-              <ProductCard key={id} {...product} />
-          ))}
+          products.map((product, id) => <ProductCard key={id} {...product} />)}
       </div>
     );
   }
