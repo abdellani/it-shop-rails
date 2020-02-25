@@ -130,7 +130,7 @@ products = []
 users[0, 5].each do |user|
   3.times do
     product = user.products.new({
-      name: Faker::Lorem.word,
+      name: Faker::Lorem.sentence(word_count: 3),
       description: Faker::Lorem.paragraph(
         sentence_count: 2,
         supplemental: false,
