@@ -17,18 +17,17 @@
 import App from "./src/application";
 import ReactDOM from "react-dom";
 import React from "react";
-import { createStore, applyMiddleware,compose } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import reducer from "./src/reducers/reducer";
 
-const store = createStore(
-  reducer,
-  compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  )
-);
+let devTools =
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+if (process.env.NODE_ENV === "prod" || process.env.NODE_ENV === "production") {
+  devTools = a => a;
+}
+const store = createStore(reducer, compose(applyMiddleware(thunk), devTools));
 
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
